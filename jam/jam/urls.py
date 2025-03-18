@@ -1,7 +1,7 @@
 """
 URL configuration for jam project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The urlpatterns list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
 Function views
@@ -17,11 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import index
+from django.urls import re_path
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('api.urls')),
-    path('', index, name='home'),  # Serve React on root URL
+    # path('', index),
+    # path('join', index),
+    # path('create', index),
+    # path('room/<str:roomCode>', index),
+    re_path(r"^.*$", TemplateView.as_view(template_name="index.html"), name="home"),
+      # Serve React app
+
 
 
 ]
