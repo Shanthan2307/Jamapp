@@ -23,12 +23,9 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('api.urls')),
-    # path('', index),
-    # path('join', index),
-    # path('create', index),
-    # path('room/<str:roomCode>', index),
     re_path(r"^.*$", TemplateView.as_view(template_name="index.html"), name="home"),
       # Serve React app
+    path('spotify',include('spotify.urls'))
 
 
 
